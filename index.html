@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise Quality Prediction: Results Analysis</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #2980b9;
+            margin-top: 30px;
+        }
+        h3 {
+            color: #3498db;
+        }
+        .highlight {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .model-comparison {
+            display: flex;
+            justify-content: space-between;
+            margin: 30px 0;
+        }
+        .model-card {
+            width: 48%;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .model-card h3 {
+            margin-top: 0;
+            text-align: center;
+        }
+        .accuracy {
+            font-size: 24px;
+            text-align: center;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+        .rf {
+            color: #27ae60;
+        }
+        .gbm {
+            color: #2980b9;
+        }
+        .conclusion {
+            background-color: #e8f4f8;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Exercise Quality Prediction: Results Analysis</h1>
+    
+    <div class="highlight">
+        <p>This analysis examines the performance of machine learning models in predicting the manner in which participants performed barbell lifts based on data from accelerometers.</p>
+    </div>
+    
+    <h2>Model Performance</h2>
+    
+    <div class="model-comparison">
+        <div class="model-card">
+            <h3>Random Forest</h3>
+            <div class="accuracy rf">99.35%</div>
+            <p>The Random Forest model demonstrated exceptional accuracy on the validation set, correctly classifying the exercise manner in nearly all cases.</p>
+        </div>
+        
+        <div class="model-card">
+            <h3>Gradient Boosting</h3>
+            <div class="accuracy gbm">96.31%</div>
+            <p>While the Gradient Boosting model performed very well, it did not achieve the same level of accuracy as Random Forest for this specific problem.</p>
+        </div>
+    </div>
+    
+    <h2>Expected Out-of-Sample Error</h2>
+    
+    <p>The expected out-of-sample error is the error rate we anticipate when applying our model to new, unseen data:</p>
+    
+    <table>
+        <tr>
+            <th>Model</th>
+            <th>Accuracy</th>
+            <th>Error Rate</th>
+        </tr>
+        <tr>
+            <td>Random Forest</td>
+            <td>99.35%</td>
+            <td>0.65%</td>
+        </tr>
+        <tr>
+            <td>Gradient Boosting</td>
+            <td>96.31%</td>
+            <td>3.69%</td>
+        </tr>
+    </table>
+    
+    <p>This extremely low error rate for the Random Forest model suggests that it is highly effective at capturing the patterns in the accelerometer data that distinguish between different exercise manners.</p>
+    
+    <p>The 5-fold cross-validation used during training provides additional confidence that this error rate is reliable and consistent across different subsets of the data.</p>
+    
+    <h2>Why Random Forest Performed Better</h2>
+    
+    <p>The Random Forest model likely outperformed Gradient Boosting for several key reasons:</p>
+    
+    <ul>
+        <li><strong>Handling non-linear relationships:</strong> The connections between accelerometer readings and exercise quality are inherently non-linear, which Random Forest captures effectively.</li>
+        <li><strong>Feature importance management:</strong> Random Forest naturally identifies and prioritizes the most important variables, particularly valuable with the numerous accelerometer measurements in this dataset.</li>
+        <li><strong>Resilience to noise:</strong> Human movement data typically contains noise, and Random Forest is particularly robust to noisy inputs.</li>
+        <li><strong>Ensemble approach:</strong> By building multiple decision trees and aggregating their predictions, Random Forest reduces overfitting compared to single-tree methods.</li>
+    </ul>
+    
+    <div class="conclusion">
+        <h2>Conclusion</h2>
+        <p>The Random Forest approach proved to be highly effective for this human activity recognition task, with an expected out-of-sample error of only 0.65%. This suggests that accelerometer data from wearable devices can be used to assess not just the quantity but also the quality of physical exercises with high accuracy.</p>
+        <p>This analysis demonstrates that machine learning techniques can effectively evaluate exercise form, potentially enabling applications in personal fitness tracking, rehabilitation monitoring, and athletic training.</p>
+    </div>
+    
+</body>
+</html>
