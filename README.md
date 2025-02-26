@@ -1,6 +1,5 @@
 # JHU Practical Machine Learning Course
 
-View the [Exercise Quality Prediction Results](https://github.com/ciroque/jhu-pml-cp/blob/main/index.html)
-
+View the [Exercise Quality Prediction Results](https://ciroque.github.io/jhu-pml-cp/)
 
 
